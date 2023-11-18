@@ -1,12 +1,19 @@
-import React from 'react'
-import { SafeAreaView, Text } from 'react-native'
+import React from 'react';
+import {Button, SafeAreaView, Text, TextInput} from 'react-native';
 
-const Todo = () => {
+type IProps = {
+  todo: string;
+  setTodo: React.Dispatch<React.SetStateAction<string>>;
+  addTodo: () => void
+};
+
+const Todo: React.FC<IProps> = ({todo, setTodo, addTodo}) => {
   return (
     <SafeAreaView>
-        <Text>Todo</Text>
+      <TextInput value={todo} onChangeText={setTodo} placeholder="Add Todo" />
+      <Button onPress={addTodo} title="Add" />
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Todo
+export default Todo;
